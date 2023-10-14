@@ -49,6 +49,8 @@
       <input type="submit" class="btn btn-primary" value="Login"></input>
 
       <a class="btn">Clear</a>
+
+      <a href="registro.php"> ¿No tienes cuenta? Registrarse</a>
 </body>
 </html>
 
