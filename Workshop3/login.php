@@ -12,14 +12,12 @@
       session_start();
       $_SESSION['user'] = $user;
 
-      //sendScheduleEmail($user['email-address'], "Bievenido");
 
       header('Location: dashboard.php');
     } else {
       header('Location: index.php?status=login');
     }
   }
-
 
 
 
