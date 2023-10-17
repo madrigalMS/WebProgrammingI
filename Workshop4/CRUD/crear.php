@@ -1,0 +1,66 @@
+<?php
+require('../utils/functions.php');
+  $provinces = getProvincesBD();
+  
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create user</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron">
+      <h1 class="display-4">Create</h1>
+      <p class="lead">This is the create process</p>
+      <hr class="my-4">
+    </div>
+    <form method="post" action="guardarUser.php">
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input id="first-name" class="form-control" type="text" name="firstName">
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input id="last-name" class="form-control" type="text" name="lastName">
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input id="email" class="form-control" type="text" name="email">
+      </div>
+      <div class="form-group">
+        <label for="province">Provincia</label>
+        <select id="province" class="form-control" name="province">
+            <?php
+            
+            foreach ($provinces as $province) {
+                $id = $province['id'];
+                $nameProvince = $province['province'];
+                echo "<option value=\"$id\">$nameProvince</option>";
+            }
+            ?>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" class="form-control" type="password" name="password">
+      </div>
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" class="form-control" name="role">
+            <option value="user">User</option>
+            <option value="admin">Administrator</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary"> Create </button>
+
+    </form>
+  </div>
+</body>
+
+</html>
