@@ -1,0 +1,17 @@
+:root{
+    --dark: #16191c;
+    --dark-x: #d1d1d1;
+    --ligth: #ffffff;
+}
+
+.form-control, .btn{
+    min-height: 1rem;
+    line-height: initial;
+}
+
+
+
+
+
+
+
