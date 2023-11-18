@@ -35,6 +35,13 @@ function getCategories(){
   $users = $result->fetch_all(MYSQLI_ASSOC);
   return $users;
 }
+function getNew_sources(){
+  $connection = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
+  $query = 'SELECT * from news_sources';
+  $result = mysqli_query($connection, $query);
+  $news_surces = $result->fetch_all(MYSQLI_ASSOC);
+  return $news_surces;
+}
 
 function getCategoriesById($id){
   $connection = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
@@ -42,4 +49,19 @@ function getCategoriesById($id){
   $query = "SELECT * from categories WHERE id = $id";
   $result = mysqli_query($connection, $query);
   return $result->fetch_assoc();
+}
+
+function getNews_sources_ById($id){
+  $connection = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
+
+  $query = "SELECT * from news_sources WHERE id = $id";
+  $result = mysqli_query($connection, $query);
+  return $result->fetch_assoc();
+}
+function getNews(){
+  $connection = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
+  $query = 'SELECT * from news';
+  $result = mysqli_query($connection, $query);
+  $news = $result->fetch_all(MYSQLI_ASSOC);
+  return $news;
 }

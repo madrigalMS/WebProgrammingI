@@ -20,7 +20,7 @@
 
       <a class="navbar-brand" href="#"><img src="../../img/Logo.png" class="img-fluid" width="250" height="200"></a>
 
-      <?php include("../../elements/dropdown.html"); ?>
+      <?php include("../../elements/dropdown.php"); ?>
     </div>
   </nav>
 
@@ -31,8 +31,7 @@
         <form action="save_categorie.php" method="POST" class="form-inline" role="form">
           <div class="mb-3 border-top">
             <label for="name" class="form-label font-weight-bold mt-4"></label>
-            <input type="name" name="name" class="form-control" placeholder="Name"
-              aria-describedby="nameHelp">
+            <input type="name" name="name" class="form-control" placeholder="Name" aria-describedby="nameHelp">
           </div>
           <div class="mb-3 border-top mt-5">
           </div>

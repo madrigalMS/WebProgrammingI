@@ -22,6 +22,5 @@ if (isset($_SESSION['user'])) {
     
     mysqli_close($conn);
 } else {
-    // La sesión del usuario no está configurada o no ha iniciado sesión
-    // Puedes manejar esto de acuerdo a tus necesidades
+    
 }

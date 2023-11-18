@@ -1,14 +1,6 @@
 <?php
 require('../../utils/functions.php');
 $categories = getCategories();
-
-  session_start();
-  $user = $_SESSION['user'];
-
-  if (!$user) {
-    header('Location: index.php');
-  }
-
 ?>
 
 <!doctype html>
@@ -34,7 +26,7 @@ $categories = getCategories();
 
             <a class="navbar-brand" href="#"><img src='../../img/Logo.png' class="img-fluid" width="250" height="200"></a>
 
-            <?php include('../../elements/dropdown.html'); ?>
+            <?php include("../../elements/dropdown.php"); ?>
         </div>
     </nav>
 

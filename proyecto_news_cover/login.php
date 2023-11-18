@@ -14,7 +14,8 @@ if ($_POST) {
         if ($user['role_id'] === '1') {
             header('Location: admin_area/categories.php');
         } else {
-            header('Location: user_area/CRUD/add_new_source.php');
+            header('Location: dashboard.php');
+            //header('Location: user_area/news_sources.php');
         }
     } else {
         header('Location: index.php?status=login');
