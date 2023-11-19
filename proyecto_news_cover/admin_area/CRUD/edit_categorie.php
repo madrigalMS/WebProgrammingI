@@ -1,6 +1,6 @@
 <?php
 require('../../utils/functions.php');
-
+require('../../inc/valideSession.php');
 
 $categorie = getCategoriesById($_REQUEST['id']);
 

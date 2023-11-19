@@ -1,9 +1,10 @@
 <?php
 require('../utils/functions.php');
+require('../inc/valideSession.php');
 
-$new_sources = getNew_sources();
+$user_id = $user['id'];
 $categories = getCategories();
-
+$news_sources =  getUserNews_sources($user_id);
 ?>
 
 <!doctype html>
@@ -45,16 +46,8 @@ $categories = getCategories();
                     </tr>
                     <tbody>
                         <?php
-                        foreach ($new_sources as $new) {
-                            $categoryName = '';
-                            foreach ($categories as $category) {
-                                if ($category['id'] == $new['category_id']) {
-                                    $categoryName = $category['name'];
-                                    break;
-                                }
-                            }
-
-                            echo "<tr><td>" . $new['name'] . "</td><td>" . $categoryName . "</td><td><a href=\"CRUD/edit_new_source.php?id=" . $new['id'] . "\">Edit</a> | <a href=\"CRUD/delete_new_source.php?id=" . $new['id'] . "\">Delete</a></td></tr>";
+                        foreach ($news_sources as $new) {
+                            echo "<tr><td>" . $new['name'] . "</td><td>" . $new['category_name'] . "</td><td><a href=\"CRUD/edit_new_source.php?id=" . $new['id'] . "\">Edit</a> | <a href=\"CRUD/delete_new_source.php?id=" . $new['id'] . "\">Delete</a></td></tr>";
                         }
                         ?>
                     </tbody>

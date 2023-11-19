@@ -15,7 +15,7 @@ if ($_POST) {
             header('Location: admin_area/categories.php');
         } else {
             header('Location: dashboard.php');
-            //header('Location: user_area/news_sources.php');
+
         }
     } else {
         header('Location: index.php?status=login');

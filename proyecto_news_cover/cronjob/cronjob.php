@@ -11,9 +11,20 @@ function getConnection()
     return $connection;
 }
 
+function limpiarNoticias($db)
+{
+    $sql = "DELETE FROM news";
+
+    if ($db->query($sql) === TRUE) {
+        echo "Registros de noticias eliminados correctamente.";
+    } else {
+        echo "Error al intentar eliminar registros de noticias: " . $db->error;
+    }
+}
+
 $db = getConnection();
 
-limpiarNoticias($db);
+
 date_default_timezone_set('UTC');
 function convertDate($dateString)
 {
@@ -49,6 +60,11 @@ function obtenerNoticiasDesdeFuente($fuente, $db)
         // Si aún no se encuentra la imagen, intentar obtenerla desde enclosure
         if (empty($image_url)) {
             $image_url = obtenerURLImagenDesdeEnclosure($entry);
+        }
+    
+        // Si aún no se encuentra la imagen, intentar obtenerla desde media:content
+        if (empty($image_url)) {
+            $image_url = obtenerURLImagenDesdeMediaContent($entry);
         }
     
         $formattedDate = convertDate((string) $entry->pubDate);
@@ -98,6 +114,25 @@ function obtenerURLImagenDesdeMedia($entry)
                     $image_url = (string) $content->attributes()['url'];
                     break; // Romper el bucle una vez que se encuentra la imagen
                 }
+            }
+        }
+    }
+
+    return $image_url;
+}
+function obtenerURLImagenDesdeMediaContent($entry) {
+    $image_url = '';
+
+    // Verificar si hay una etiqueta de media:content presente
+    if (isset($entry->children('media', true)->content)) {
+        $media_content = $entry->children('media', true)->content;
+
+        // Iterar sobre las etiquetas de media:content
+        foreach ($media_content as $content) {
+            // Verificar si la etiqueta de media:content tiene una URL de imagen
+            if (isset($content->attributes()['url'])) {
+                $image_url = (string) $content->attributes()['url'];
+                break; // Romper el bucle una vez que se encuentra la URL de la imagen
             }
         }
     }
@@ -159,6 +194,9 @@ function guardarNoticiasEnBD($noticias, $db)
     }
 }
 
+$db = getConnection();
+
+limpiarNoticias($db);
 
 $query = $db->query("SELECT * FROM news_sources");
 $fuentesDeNoticias = $query->fetch_all(MYSQLI_ASSOC);
@@ -168,24 +206,6 @@ foreach ($fuentesDeNoticias as $fuente) {
     $noticias = obtenerNoticiasDesdeFuente($fuente, $db);
     guardarNoticiasEnBD($noticias, $db);
 }
-
-function limpiarNoticias($db)
-{
-    $sql = "DELETE FROM news";
-
-    if ($db->query($sql) === TRUE) {
-        echo "Registros de noticias eliminados correctamente.";
-    } else {
-        echo "Error al intentar eliminar registros de noticias: " . $db->error;
-    }
-}
-
-foreach ($fuentesDeNoticias as $fuente) {
-    $noticias = obtenerNoticiasDesdeFuente($fuente, $db);
-    guardarNoticiasEnBD($noticias, $db);
-}
-
-
 
 
 $db->close();

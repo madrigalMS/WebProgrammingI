@@ -1,6 +1,6 @@
 <?php
 require('../../utils/functions.php');
-
+require('../../inc/valideSession.php');
 
 $news_sources = getNews_sources_ById($_REQUEST['id']);
 $categories = getCategories();

@@ -21,7 +21,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand" href="#"><img src="img/Logo.png" class="img-fluid" width="250" height="200"></a>
-      <?php include("elements/dropdown.html"); ?>
+      <?php include("elements/dropdown.php"); ?>
     </div>
   </nav>
 

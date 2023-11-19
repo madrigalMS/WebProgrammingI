@@ -1,3 +1,4 @@
+<?php require('../../inc/valideSession.php');?>
 <!doctype html>
 <html lang="en">
 

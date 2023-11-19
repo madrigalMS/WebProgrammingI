@@ -44,7 +44,7 @@
         </form>
       </div>
       <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 w-100 mt-auto">
-        <p class="d-inline-block mb-0">If you don't have an account</p> <a href="#">Signup Here</a>
+        <p class="d-inline-block mb-0">If you don't have an account</p> <a href="signup.php">Signup Here</a>
       </div>
     </div>
   </section>
