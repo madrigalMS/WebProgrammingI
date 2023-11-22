@@ -4,7 +4,7 @@ $name = $_POST['name'];
 $url = $_POST['url'];
 $category = $_POST['category'];
 
-// Verifica si se está realizando una actualización (update)
+// Verifica si se está realizando una actualización y se modfican los cambios si es necesario
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
     $sql = "UPDATE news_sources SET `name` = '$name', `url` = '$url', `category_id` = '$category' WHERE `id` = $id";

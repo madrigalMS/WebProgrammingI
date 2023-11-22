@@ -3,7 +3,7 @@
 $name = $_POST['name'];
 
 
-// Verifica si se está realizando una actualización (update)
+// Verifica si se está realizando una actualización y se modfican los cambios si es necesario
 if (isset($_POST['id'])) {
   $sql = "UPDATE categories SET `name` = '$name' 
           WHERE `id` = {$_POST['id']} ";

@@ -1,4 +1,4 @@
-<?php require('../../inc/valideSession.php');?>
+<?php require('../../inc/valideSession.php'); ?>
 <!doctype html>
 <html lang="en">
 
@@ -10,53 +10,53 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style_login.css">
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;600&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/style.css">
   <title>Hello, world!</title>
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
 
-      <a class="navbar-brand" href="#"><img src="../../img/Logo.png" class="img-fluid" width="250" height="200"></a>
+      <a class="navbar-brand" href="#"><img src="../../img/logo.png" class="img-fluid" width="350" height="350"></a>
 
       <?php include("../../elements/dropdown.php"); ?>
     </div>
   </nav>
 
-  <section>
-    <div class="col-lg-5 d-flex flex-column align-items-end" style="margin-left: 100px;">
-      <div class="px-lg-5 py-lg-4 p-4 w-100 alingn-self-center">
-        <h1 class="font-weight-bold mb-4">Categories</h1>
-        <form action="save_categorie.php" method="POST" class="form-inline" role="form">
-          <div class="mb-3 border-top">
-            <label for="name" class="form-label font-weight-bold mt-4"></label>
-            <input type="name" name="name" class="form-control" placeholder="Name" aria-describedby="nameHelp">
-          </div>
-          <div class="mb-3 border-top mt-5">
-          </div>
-          <input type="submit" class="btn btn-secondary w-100 mt-4" value="Save">
-        </form>
+  <section class="mt-3">
+    <div class="container mb-3">
+      <div class="row justify-content-lg-start">
+        <div class="col-lg-5 col-md-8 col-sm-10 mt-5">
+          <form action="save_categorie.php" method="POST">
+            <h1 class="mb-4">Categories</h1>
+            <div class="mb-4 border-top">
+              <label for="name" class="form-label font-weight-bold mt-5"></label>
+              <input type="name" name="name" class="form-control" placeholder="Name" aria-describedby="nameHelp">
+            </div>
+            <div class="mb-3 border-top mt-5"></div>
+            <input type="submit" class="btn btn-secondary w-100 mt-4" value="Save">
+            <div class="mt-5"></div>
+          </form>
+          <div class="mt-5"></div>
+        </div>
       </div>
-      <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 w-100 mt-auto">
-      </div>
+      <div class="mt-5"></div>
     </div>
   </section>
-  <?php include("../../elements/footer.html"); ?>
+  <?php include("../../elements/footer.php"); ?>
 
-  <!-- Optional JavaScript; choose one of the two! -->
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>

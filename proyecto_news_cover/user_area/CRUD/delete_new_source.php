@@ -2,6 +2,7 @@
 
 $id = $_REQUEST['id'];
 
+// Elimina el registro de la tabla news_soruces según su id
 if($id) {
 
   $sql = "DELETE FROM news_sources WHERE `id` = $id";

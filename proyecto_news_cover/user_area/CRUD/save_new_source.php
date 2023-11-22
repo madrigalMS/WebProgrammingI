@@ -2,6 +2,7 @@
 
 session_start(); 
 
+// Se guarda un nuevo registro de RSS feed relacionado con el usuario
 if (isset($_SESSION['user'])) {
     $user_id = $_SESSION['user']['id']; 
 

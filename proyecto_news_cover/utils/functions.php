@@ -7,6 +7,7 @@ function getConnection()
 }
 
 
+// Guarda un usuario nuevo
 function saveUser($user)
 {
   $sql = "INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`, `address`, `address2`, `country`, `city`, `postal_code`, `phone_number`, `role_id`) VALUES
@@ -17,6 +18,7 @@ function saveUser($user)
 
   return true;
 }
+
 function authenticate($email, $password)
 {
   $conn = getConnection();
@@ -31,45 +33,49 @@ function authenticate($email, $password)
   return $results;
 }
 
+// Obtiene todos los registros de la tabla categorias
 function getCategories()
 {
-  $connection = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
+  $conn = getConnection();
   $query = 'SELECT * from categories';
-  $result = mysqli_query($connection, $query);
+  $result = mysqli_query($conn, $query);
   $users = $result->fetch_all(MYSQLI_ASSOC);
   return $users;
 }
+
+// Obtiene todos los registros de la tabla news_sources
 function getNew_sources()
 {
-  $connection = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
+  $conn = getConnection();
   $query = 'SELECT * from news_sources';
-  $result = mysqli_query($connection, $query);
+  $result = mysqli_query($conn, $query);
   $news_surces = $result->fetch_all(MYSQLI_ASSOC);
   return $news_surces;
 }
 
 function getCategoriesById($id)
 {
-  $connection = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
+  $conn = getConnection();
 
   $query = "SELECT * from categories WHERE id = $id";
-  $result = mysqli_query($connection, $query);
+  $result = mysqli_query($conn, $query);
   return $result->fetch_assoc();
 }
 
+ // Obtiene los registro de la tabla news_sources según el id
 function getNews_sources_ById($id)
-{
-  $connection = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
-
-  $query = "SELECT * from news_sources WHERE id = $id";
-  $result = mysqli_query($connection, $query);
-  return $result->fetch_assoc();
-}
-function getUserNews_sources($user_id)
 {
   $conn = getConnection();
 
-  // Utilizamos un INNER JOIN para obtener el nombre de la categoría
+  $query = "SELECT * from news_sources WHERE id = $id";
+  $result = mysqli_query($conn, $query);
+  return $result->fetch_assoc();
+}
+
+ // Obtiene el id y nombre de las categorias de la tabla news_soruces
+function getUserNews_sources($user_id)
+{
+  $conn = getConnection();
   $query = "SELECT DISTINCT ns.id AS id, ns.category_id, c.name AS category_name, ns.name AS name
               FROM news_sources ns
               INNER JOIN categories c ON ns.category_id = c.id
@@ -86,6 +92,7 @@ function getUserNews_sources($user_id)
 
   return $categories;
 }
+
 function getNews()
 {
   $connection = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
@@ -94,6 +101,8 @@ function getNews()
   $news = $result->fetch_all(MYSQLI_ASSOC);
   return $news;
 }
+
+ // Obtiene todas las noticias del usuario según su cateogoria
 function getUserCategoriesNews($user_id)
 {
   $conn = getConnection();
@@ -110,6 +119,8 @@ function getUserCategoriesNews($user_id)
 
   return $categories;
 }
+
+ // Obtiene el nombre de las categorias según un arreglo de ids
 function getCategoriesByIds($category_ids)
 {
   $conn = getConnection();
@@ -130,6 +141,8 @@ function getCategoriesByIds($category_ids)
 
   return $categories;
 }
+
+ // Obtiene el nombre de las categorias según un arreglo de ids
 function getNewsByCategoryId($categoryId, $user_id)
 {
   $conn = getConnection();
@@ -148,6 +161,8 @@ function getNewsByCategoryId($categoryId, $user_id)
     die("Error al obtener noticias: " . mysqli_error($conn));
   }
 }
+
+ // Obtiene todas las notcias de un usuario según su id
 function getAllNews($user_id)
 {
   $conn = getConnection();
@@ -170,6 +185,8 @@ function getAllNews($user_id)
     die("Error retrieving all news with category names: " . $conn->error);
   }
 }
+
+ // Verifica si el usuario tiene noticias
 function userHasNewsSources($user_id)
 {
   $conn = getConnection();
@@ -184,6 +201,7 @@ function userHasNewsSources($user_id)
   }
 }
 
+ // Obtiene el nombre de las categorias según un arreglo de ids
 function userHasNews($user_id)
 {
   $conn = getConnection();

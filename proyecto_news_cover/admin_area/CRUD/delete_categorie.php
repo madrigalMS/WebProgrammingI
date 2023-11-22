@@ -2,6 +2,7 @@
 
 $id = $_REQUEST['id'];
 
+// Elimina la categoria según su id
 if($id) {
 
   $sql = "DELETE FROM categories WHERE `id` = $id";

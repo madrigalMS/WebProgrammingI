@@ -1,5 +1,5 @@
 <?php
-require('utils/functions.php');
+require('../utils/functions.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['firstName'])) {
   $user = array(
@@ -15,8 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['firstName'])) {
     'phone' => $_POST['phone'],
     'role' => $_POST['role']
   );
+
   if (saveUser($user)) {
-    header('Location: index.php');
+    header('Location: ../index.php');
   } else {
     header('Location: /?error=true');
   }

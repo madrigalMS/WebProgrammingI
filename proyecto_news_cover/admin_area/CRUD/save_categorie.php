@@ -2,7 +2,7 @@
 
 $name = $_POST['name'];
 
-
+// Se guarda una nueva categoria
 $conn = mysqli_connect('localhost', 'root', '', 'proyecto_news_cover');
 
 
